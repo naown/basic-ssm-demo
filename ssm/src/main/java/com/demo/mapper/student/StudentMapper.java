@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
  * @Date 2019/6/7 15:32
  * @Created by 陈舰
  */
+@Repository
 public interface StudentMapper {
 
     Student queryStudentById(int sid);
