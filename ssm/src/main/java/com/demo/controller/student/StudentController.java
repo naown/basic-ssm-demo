@@ -38,4 +38,11 @@ public class StudentController {
         return "200";
     }
 
+    @GetMapping("user123")
+    @ResponseBody
+    public String addUser123(){
+        transaction.addStudenDemo();
+        return "200";
+    }
+
 }
