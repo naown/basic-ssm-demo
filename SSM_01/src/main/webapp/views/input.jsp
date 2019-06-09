@@ -11,7 +11,7 @@
     <title>信息输入</title>
 </head>
 <body>
-    <form action="addStudent" method="post">
+    <form action="student/addStudent" method="post">
         学生姓名：<input type="text" name="sname">
         学生年龄：<input type="text" name="sage">
         学生性别：<input type="text" name="gender">

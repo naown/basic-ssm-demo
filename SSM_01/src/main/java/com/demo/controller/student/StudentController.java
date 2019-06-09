@@ -39,7 +39,7 @@ public class StudentController {
 
     @RequestMapping("addUser1")
     public String addUser1(){
-        return "redirect:views/succeed.jsp";
+        return "redirect:/views/succeed.jsp";
     }
 
 }
