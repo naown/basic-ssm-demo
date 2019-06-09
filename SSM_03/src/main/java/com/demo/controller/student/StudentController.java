@@ -5,12 +5,15 @@ package com.demo.controller.student;
 
 
 import com.demo.entity.student.Student;
+import com.demo.entity.student.User;
 import com.demo.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Classname StudentController
@@ -24,6 +27,8 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+    /*@Autowired
+    StudentMapper studentMapper;*/
 
     @GetMapping
     @ResponseBody
@@ -31,23 +36,45 @@ public class StudentController {
         return "hello";
     }
 
-    @GetMapping("user")
-    @ResponseBody
-    public String addUser(){
-        studentService.addStudenDemo();
-        return "200";
+    @RequestMapping("login")
+    public String login(User user , Map<String,Object> map){
+        User user1 = studentService.queryUserimpl(user.getUname());
+        if (user1!=null){
+            if (user1.getUname().equals(user.getUname())){
+                if (user1.getUpassword().equals(user.getUpassword())){
+                    List<Student> list = studentService.queryAllImpl();
+                    map.put("students",list);
+                    return "succeed";
+                }
+            }
+        }
+        map.put("mess","用户名或密码错误");
+        return "forward:index.jsp";
     }
 
-    @RequestMapping("show")
-    public String show(Student student){
-        System.out.println(student);
-        studentService.addStudentUser(student);
-        return "succeed";
+    @RequestMapping("delete/{sid}")
+    public ModelAndView delete(@PathVariable("sid")int sid){
+        studentService.deleteByIdImpl(sid);
+        ModelAndView modelAndView = new ModelAndView("succeed");
+        List<Student> list = studentService.queryAllImpl();
+        modelAndView.addObject("students",list);
+        return modelAndView;
+        //return "redirect:views/succeed.jsp";
     }
 
-    @RequestMapping("index1")
-    public String index(){
-        return "redirect:/views/index.html";
+    @RequestMapping("views/{id}")
+    public ModelAndView updateStudent(@PathVariable("id")int sid){
+        //System.out.println(sid);
+        Student student = studentService.queryStudentById(sid);
+        ModelAndView modelAndView = new ModelAndView("redirect:update.jsp");
+        modelAndView.addObject("student1",student);
+        return modelAndView;
     }
+
+    @RequestMapping("updateUser")
+    public String updateUser(){
+        return "111";
+    }
+
 
 }

@@ -5,10 +5,14 @@ package com.demo.service.student.impl;
 
 
 import com.demo.entity.student.Student;
+import com.demo.entity.student.User;
 import com.demo.mapper.student.StudentMapper;
 import com.demo.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Classname TransactionImpl
@@ -23,14 +27,9 @@ public class StudentServiceImpl implements StudentService {
     StudentMapper studentMapper;
 
     @Override
-    public Student[] queryStudentArray() {
-        Student[] students = new Student[10];
-        Student student1 = studentMapper.queryStudentById(1);
-
-        Student student2 = studentMapper.queryStudentById(2);
-        students[0] = student1;
-        students[1] = student2;
-        return students;
+    public Student queryStudentById(int sid) {
+        Student student = studentMapper.queryStudentById(sid);
+        return student;
     }
 
 
@@ -57,4 +56,26 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.addUserStudent(student);
     }
 
+    @Override
+    public User queryUserimpl(String uname) {
+        User user = studentMapper.queryUser(uname);
+        return user;
+    }
+
+    @Override
+    public List<Student> queryAllImpl(){
+        List<Student> list = new ArrayList<>();
+        list = studentMapper.queryAll();
+        return list;
+    }
+
+    @Override
+    public void deleteByIdImpl(int sid){
+        studentMapper.deleteById(sid);
+    }
+
+    @Override
+    public void updateStudentImpl(Student student){
+        studentMapper.updateStudent(student);
+    }
 }

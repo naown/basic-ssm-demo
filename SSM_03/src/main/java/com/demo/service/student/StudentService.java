@@ -2,7 +2,10 @@ package com.demo.service.student;
 
 
 import com.demo.entity.student.Student;
+import com.demo.entity.student.User;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Classname Transaction
@@ -13,9 +16,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StudentService {
 
-    public Student[] queryStudentArray();
+    Student queryStudentById(int sid);
 
-    public void addStudenDemo();
+    void addStudenDemo();
 
-    public void addStudentUser(Student student);
+    void addStudentUser(Student student);
+
+    User queryUserimpl(String uname);
+
+    List<Student> queryAllImpl();
+
+    void deleteByIdImpl(int sid);
+
+    void updateStudentImpl(Student student);
 }

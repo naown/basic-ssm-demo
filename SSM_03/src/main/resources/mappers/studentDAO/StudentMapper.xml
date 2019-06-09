@@ -15,4 +15,20 @@
     <insert id="addUserStudent" parameterType="com.demo.entity.student.Student">
         insert INTO student(sname,sage,address,gender) values (#{sname},#{sage},#{address},#{gender})
     </insert>
+
+    <select id="queryUser" parameterType="java.lang.String" resultType="com.demo.entity.student.User">
+        select * from users where uname = #{uname}
+    </select>
+
+    <select id="queryAll" resultType="com.demo.entity.student.Student">
+        select * from student
+    </select>
+
+    <delete id="deleteById" parameterType="int">
+        delete from student where sid = #{sid}
+    </delete>
+
+    <update id="updateStudent" parameterType="com.demo.entity.student.Student">
+        update student set sname = #{sname} , sage = #{sage} , address = #{address} , gender = #{gender} where sid = #{sid}
+    </update>
 </mapper>

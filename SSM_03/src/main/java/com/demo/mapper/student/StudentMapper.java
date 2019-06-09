@@ -4,7 +4,10 @@
 package com.demo.mapper.student;
 
 import com.demo.entity.student.Student;
+import com.demo.entity.student.User;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Classname StudentMapper
@@ -19,5 +22,13 @@ public interface StudentMapper {
 
     void addStudent(Student student);
 
-    public void addUserStudent(Student student);
+    void addUserStudent(Student student);
+
+    User queryUser(String uname);
+
+    List<Student> queryAll();
+
+    void deleteById(int sid);
+
+    void updateStudent(Student student);
 }

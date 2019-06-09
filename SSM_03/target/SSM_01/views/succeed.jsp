@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.demo.entity.student.Student" %>
 <%--
   Created by IntelliJ IDEA.
   User: 陈舰
@@ -11,6 +13,43 @@
     <title>Title</title>
 </head>
 <body>
-    成功
+<form>
+    <table border="1px" style="top: 0px">
+        <tr>
+            <th>学生id</th>
+            <th>学生姓名</th>
+            <th>学生年龄</th>
+            <th>家庭住址</th>
+            <th>学生性别</th>
+            <th>操作</th>
+        </tr>
+        <%
+            List<Student> list = (List<Student>) request.getAttribute("students");
+            for (Student student : list){
+        %>
+        <tr>
+            <td>
+                <a href="views/<%=student.getSid()%>"><%=student.getSid()%></a>
+            </td>
+            <td>
+                <%=student.getSname()%>
+            </td>
+            <td>
+                <%=student.getSage()%>
+            </td>
+            <td>
+                <%=student.getAddress()%>
+            </td>
+            <td>
+                <%=student.getGender()%>
+            </td>
+            <td><a href="delete/<%=student.getSid()%>">删除</a></td>
+        </tr>
+        <%
+                request.getSession().setAttribute("studentUpdate",student);
+            }
+        %>
+    </table>
+</form>
 </body>
 </html>
