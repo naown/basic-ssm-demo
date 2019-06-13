@@ -22,7 +22,7 @@ import java.util.Map;
  * @Created by 陈舰
  */
 @Controller
-//@RequestMapping("student")
+@RequestMapping("student")
 public class StudentController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class StudentController {
     /*@Autowired
     StudentMapper studentMapper;*/
 
-    @GetMapping
+    @GetMapping("/hello")
     @ResponseBody
     public String hello(){
         return "hello";
@@ -64,17 +64,36 @@ public class StudentController {
 
     @RequestMapping("views/{id}")
     public ModelAndView updateStudent(@PathVariable("id")int sid){
-        //System.out.println(sid);
         Student student = studentService.queryStudentById(sid);
-        ModelAndView modelAndView = new ModelAndView("redirect:update.jsp");
+        ModelAndView modelAndView = new ModelAndView("update");
         modelAndView.addObject("student1",student);
+        System.out.println(student);
         return modelAndView;
     }
 
-    @RequestMapping("updateUser")
-    public String updateUser(){
-        return "111";
+    @PostMapping("update")
+    public ModelAndView update(Student student){
+       // todo
+        studentService.updateStudentImpl(student);
+        ModelAndView modelAndView = new ModelAndView("succeed");
+        List<Student> list = studentService.queryAllImpl();
+        modelAndView.addObject("students",list);
+        return modelAndView;
     }
 
+    @RequestMapping("111")
+    public String test(){
+        return "addStudent";
+    }
+
+    @RequestMapping("addStudent1")
+    public ModelAndView addStudent1(Student student){
+        studentService.addStudentUser(student);
+        ModelAndView modelAndView = new ModelAndView("succeed");
+        List<Student> list = studentService.queryAllImpl();
+        modelAndView.addObject("students",list);
+        modelAndView.addObject("mess","添加成功");
+        return modelAndView;
+    }
 
 }

@@ -17,7 +17,7 @@
 <h2>欢迎登陆</h2>
 <hr/>
 <%-- 用户名密码校验 --%>
-<form action="login" method="post">
+<form action="student/login" method="post">
     用户名:<input type="text" name="uname"><br/>
     密&nbsp;&nbsp;&nbsp;码:<input type="password" name="upassword"><br/>
     <input type="submit" value="登陆"><br/>

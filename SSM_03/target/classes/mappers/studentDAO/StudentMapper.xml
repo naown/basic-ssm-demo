@@ -31,4 +31,5 @@
     <update id="updateStudent" parameterType="com.demo.entity.student.Student">
         update student set sname = #{sname} , sage = #{sage} , address = #{address} , gender = #{gender} where sid = #{sid}
     </update>
+
 </mapper>

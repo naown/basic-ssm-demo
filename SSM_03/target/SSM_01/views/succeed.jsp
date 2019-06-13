@@ -13,6 +13,11 @@
     <title>Title</title>
 </head>
 <body>
+<%String mess = (String)request.getAttribute("mess");
+    if (mess!=null){
+        out.print(mess);
+    }
+%>
 <form>
     <table border="1px" style="top: 0px">
         <tr>
@@ -29,7 +34,7 @@
         %>
         <tr>
             <td>
-                <a href="views/<%=student.getSid()%>"><%=student.getSid()%></a>
+               <a href="http://localhost:8080/SSM_03/student/views/<%=student.getSid()%>"><%=student.getSid()%></a>
             </td>
             <td>
                 <%=student.getSname()%>
@@ -46,10 +51,10 @@
             <td><a href="delete/<%=student.getSid()%>">删除</a></td>
         </tr>
         <%
-                request.getSession().setAttribute("studentUpdate",student);
             }
         %>
     </table>
+    <a href="http://localhost:8080/SSM_03/views/addStudent.jsp">添加信息</a>
 </form>
 </body>
 </html>
