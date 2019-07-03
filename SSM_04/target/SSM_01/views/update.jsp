@@ -11,12 +11,11 @@
     <title>更新个人信息</title>
 </head>
 <body>
+<%-- 从request域中获取数据库中的输入然后传入value栏中 --%>
 <%
     Student student1 = (Student)request.getAttribute("student1");
     out.print(student1);
 %>
-<%--    <form action="student/update" method="post">--%>
-<%--    <form action="student/update" method="post">--%>
     <form action="http://localhost:8080/SSM_04/student/update" method="post">
         学生ID：<input type="text" name="sid" readonly value="<%=student1.getSid()%>"><br/>
         学生姓名：<input type="text" name="sname" value="<%=student1.getSname()%>"><br/>

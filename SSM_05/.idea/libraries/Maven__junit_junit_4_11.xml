@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Maven: junit:junit:4.11">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../mevanbank/junit/junit/4.11/junit-4.11.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../apache-tomcat-9.0.19/lib" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../mevanbank/junit/junit/4.11/junit-4.11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../mevanbank/junit/junit/4.11/junit-4.11-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../mevanbank/junit/junit/4.11" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../../apache-tomcat-9.0.19/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../mevanbank/junit/junit/4.11" recursive="false" type="SOURCES" />
+  </library>
+</component>

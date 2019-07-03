@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+<%-- 添加学生信息导入数据库中 --%>
 <form action="http://localhost:8080/SSM_04/student/addStudent1" method="post">
     学生姓名：<input type="text" name="sname"><br/>
     学生年龄：<input type="text" name="sage"><br/>

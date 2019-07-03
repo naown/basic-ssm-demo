@@ -14,12 +14,14 @@
     <title>Title</title>
 </head>
 <body>
+<%-- 获取提示信息，比如添加成功以及删除成功 --%>
 <%String mess = (String)request.getAttribute("mess");
     if (mess!=null){
         out.print(mess);
     }
     Prop prop = (Prop) request.getSession().getAttribute("prop");
 %>
+<%-- 数据表格主体 --%>
 <form action="http://localhost:8080/SSM_04/student/updateDATA">
     <table border="1px" style="top: 0px">
         <tr>
@@ -59,6 +61,7 @@
     <a href="http://localhost:8080/SSM_04/views/addStudent.jsp">添加信息</a>
     &nbsp;
     请选择显示条数：
+    <%-- 下拉列表框，选择几条数据进行显示 --%>
     <select name="numbers">
     <option value="5">5</option>
     <option value="10">10</option>
@@ -71,5 +74,7 @@
     <%=(prop.getLast()-1)*prop.getNumbers()==prop.getSpeed()?"尾页":"<a href=\"http://localhost:8080/SSM_04/student/last\">尾页</a>"%>
     <input type="submit" value="更新数据">
 </form>
+<br/>
+<a href="http://localhost:8080/SSM_04/student/logout">注销</a>
 </body>
 </html>

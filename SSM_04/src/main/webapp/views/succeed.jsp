@@ -74,5 +74,7 @@
     <%=(prop.getLast()-1)*prop.getNumbers()==prop.getSpeed()?"尾页":"<a href=\"http://localhost:8080/SSM_04/student/last\">尾页</a>"%>
     <input type="submit" value="更新数据">
 </form>
+<br/>
+<a href="http://localhost:8080/SSM_04/student/logout">注销</a>
 </body>
 </html>

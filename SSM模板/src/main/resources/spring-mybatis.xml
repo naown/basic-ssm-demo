@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 3.DI注解解析器 -->
+    <context:annotation-config/>
+    <!-- 3.IOC注解扫描器 -->
+    <context:component-scan base-package="com.ssm.service"/>
+    <!-- 事务解析器 -->
+    <tx:annotation-driven transaction-manager="Transaction"/>
+
+    <!-- 1.加载数据源Druid -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://112.74.63.222:3306/cj_dbTest?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="Wcj@469753862"/>
+    </bean>
+
+    <!-- 2.加载sqlsessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:mappers/StudentMapper.xml"/>
+    </bean>
+
+    <!-- 通过bean配置mapper -->
+    <!--<bean id="studentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.ssm.mapper.StudentMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    <bean id="studentService" class="com.ssm.service.impl.StudentServiceImpl">
+        <property name="studentMapper" ref="studentMapper"></property>
+    </bean>-->
+
+    <!-- 3.通过注解进行配置mapper 注意这里是mapper所在的包 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ssm.mapper"/>
+    </bean>
+
+    <!-- 4.事务管理器 -->
+    <bean id="Transaction" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+</beans>
