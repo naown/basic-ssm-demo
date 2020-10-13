@@ -23,7 +23,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.1</version>
     </dependency>
 
     <!-- MyBatis内的12个扩展包，可加可不加，暂时没发现怎么用，就一个日志用得到 -->
